@@ -52,7 +52,6 @@ export default function ArchivedesignLanding() {
             alt={BRAND.logoAlt}
             className="h-16 md:h-20 w-auto"
             />
-            <span className="font-semibold tracking-tight">archivedesign.ai</span>
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#how" className="hover:opacity-80">How it works</a>
