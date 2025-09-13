@@ -13,8 +13,8 @@ const BRAND = {
   textMuted: "#4B4B4B",
   surface: "#FFFFFF",
   surfaceAlt: "#FAF9F6",
-  logoUrl: "/archivedesignai-logo.png",
-  logoAlt: "Archivedesign.ai logo"
+  logoUrl: import.meta.env.BASE_URL + 'archivedesignai-logo.png',
+  logoAlt: 'Archivedesign.ai logo'
 };
 
 const features = [
