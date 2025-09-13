@@ -44,7 +44,9 @@ export default function ArchivedesignLanding() {
   return (
     <div className="min-h-screen w-full bg-[color:var(--brand-primary-muted)] text-[color:var(--brand-text)]" style={styleVars}>
       {/* Nav */}
-      <header className="sticky top-0 z-40 backdrop-blur bg-white/80 border-b border-black/5">
+      <header
+      className="sticky top-0 z-40 border-b border-black/5"
+      style={{ backgroundColor: "#fef6e2" }}>
         <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <img
