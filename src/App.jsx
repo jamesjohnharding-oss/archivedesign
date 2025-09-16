@@ -181,10 +181,27 @@ export default function ArchivedesignLanding() {
         <div className="max-w-3xl mx-auto px-4 text-center">
           <h2 className="text-2xl md:text-3xl font-semibold">Get early access</h2>
           <p className="mt-3 text-[color:var(--brand-text-muted)]">Join the waitlist and we'll notify you when invites open. We respect your inbox.</p>
-          <form onSubmit={(e) => e.preventDefault()} className="mt-6 mx-auto max-w-xl flex flex-col sm:flex-row gap-3">
-            <input type="email" required placeholder="you@home.com.au" className="flex-1 rounded-2xl px-4 py-3 border border-black/10 focus:outline-none focus:ring-2" style={{ "--tw-ring-color": BRAND.accent }} />
-            <button className="rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all" style={{ background: "var(--brand-accent)", color: "white" }}>Join waitlist</button>
+          <form
+            action="https://formspree.io/f/xdklvqrv"
+            method="POST"
+            className="mt-6 mx-auto max-w-xl flex flex-col sm:flex-row gap-3"
+          >
+            <input
+              type="email"
+              name="email"
+              required
+              placeholder="you@home.com.au"
+              className="flex-1 rounded-2xl px-4 py-3 border border-black/10 focus:outline-none focus:ring-2"
+            />
+            <button
+              type="submit"
+              className="rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all"
+              style={{ background: "var(--brand-accent)", color: "white" }}
+            >
+              Join waitlist
+            </button>
           </form>
+
           <p className="mt-2 text-xs text-[color:var(--brand-text-muted)]">By subscribing you agree to our <a href="#" className="underline">Terms</a> and <a href="#" className="underline">Privacy Policy</a>.</p>
         </div>
       </section >
