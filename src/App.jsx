@@ -10,7 +10,7 @@ const BRAND = {
   primaryMuted: "#EDE6D9", // light cream background from logo
   accent: "#F15A24", // bright orange icon from logo
   text: "#003B49", // reuse dark teal for text
-  textMuted: "#4B4B4B",r
+  textMuted: "#4B4B4B",
   surface: "#FFFFFF",
   surfaceAlt: "#FAF9F6",
   logoUrl: import.meta.env.BASE_URL + 'archivedesignai-logo.png',
