@@ -74,29 +74,60 @@ export default function ArchivedesignLanding() {
   </div>
 
   <div className="max-w-6xl mx-auto px-4 pt-14 pb-16 md:pt-24 md:pb-24 grid md:grid-cols-2 gap-10 items-center">
-    {/* left column unchanged */}
+    {/* Left column: text */}
     <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-      {/* ...left side content... */}
+      <h1 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
+        Premium residential plans — faster, smarter, fairly paid.
+      </h1>
+      <p className="mt-5 text-base md:text-lg text-[color:var(--brand-text-muted)] max-w-prose">
+        Archivedesign.ai connects homeowners, architects, and builders on a marketplace for beautiful, code-aware plans.
+        Save months, control costs, and share value with the original designer.
+      </p>
+      <div className="mt-7 flex flex-col sm:flex-row gap-3">
+        <a
+          href="#signup"
+          className="inline-flex justify-center items-center rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all"
+          style={{ background: "var(--brand-accent)", color: "white" }}
+        >
+          Get early access
+        </a>
+        <a
+          href="#how"
+          className="inline-flex justify-center items-center rounded-2xl px-5 py-3 font-medium border border-black/10 hover:bg-black/5 transition-all"
+        >
+          See how it works
+        </a>
+      </div>
+      <div className="mt-6 flex items-center gap-4 text-xs text-[color:var(--brand-text-muted)]">
+        <span>AU-focused • Builder-ready • Royalties for architects</span>
+      </div>
     </motion.div>
 
-    {/* right column */}
-    <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
+    {/* Right column: image + overlay */}
+    <motion.div
+      initial={{ opacity: 0, y: 12 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6, delay: 0.1 }}
+      className="relative"
+    >
       <div className="aspect-[4/3] w-full rounded-3xl bg-[color:var(--brand-surface)] border border-black/5 shadow-sm overflow-hidden">
         <div className="h-full w-full flex items-center justify-center">
           <img
-            src="/app-placeholder.png"
+            src={import.meta.env.BASE_URL + 'app-placeholder.png'}
             alt="App preview"
             className="object-contain w-full h-full"
           />
         </div>
       </div>
 
-      {/* filters panel stays INSIDE this motion.div */}
+      {/* overlay panel stays INSIDE this motion.div */}
       <div className="absolute -bottom-6 -right-6 hidden md:block p-4 rounded-2xl border border-black/5 shadow bg-[color:var(--brand-surface)]">
         <div className="text-xs text-[color:var(--brand-text-muted)]">Example filters</div>
         <div className="mt-2 flex gap-2 flex-wrap">
           {["Block 10–13m", "Modern", "3BR", "Budget $400–600k"].map((t) => (
-            <span key={t} className="text-xs px-2 py-1 rounded-full border border-black/10">{t}</span>
+            <span key={t} className="text-xs px-2 py-1 rounded-full border border-black/10">
+              {t}
+            </span>
           ))}
         </div>
       </div>
