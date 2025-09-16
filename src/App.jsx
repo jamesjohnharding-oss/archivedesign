@@ -111,7 +111,8 @@ export default function ArchivedesignLanding() {
             transition={{ duration: 0.6, delay: 0.1 }}
             className="relative"
           >
-            <div className="aspect-[4/3] w-full rounded-3xl bg-[color:var(--brand-primary-muted)] border border-black/5 shadow-sm overflow-hidden">
+            <div className="aspect-[4/3] w-full rounded-3xl border border-black/5 shadow-sm overflow-hidden"
+              style={{ backgroundColor: "#fff6e2" }}>
               <div className="h-full w-full flex items-center justify-center">
                 <img
                   src="/app-placeholder.png"
@@ -120,6 +121,7 @@ export default function ArchivedesignLanding() {
                 />
               </div>
             </div>
+
 
 
             {/* overlay panel stays INSIDE this motion.div */}
