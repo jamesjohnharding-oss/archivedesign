@@ -66,7 +66,8 @@ export default function ArchivedesignLanding() {
 
 {/* Hero */}
 <section className="relative overflow-hidden">
-  <div className="absolute inset-0" aria-hidden>
+  {/* decorative background blob */}
+  <div className="pointer-events-none absolute inset-0" aria-hidden>
     <div
       className="h-64 w-64 md:h-[28rem] md:w-[28rem] rounded-full blur-3xl opacity-20"
       style={{ background: "var(--brand-accent)" }}
@@ -155,7 +156,7 @@ export default function ArchivedesignLanding() {
       </section >
 
     {/* How it works */ }
-    < section id = "how" className = "py-16 md:py-20" >
+    < section id = "how" className = "scroll-mt-24 py-16 md:py-20" >
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-semibold">How it works</h2>
         <ol className="mt-8 grid md:grid-cols-4 gap-6">
@@ -173,7 +174,7 @@ export default function ArchivedesignLanding() {
       </section >
 
     {/* Signup */ }
-    < section id = "signup" className = "py-16 md:py-20 bg-[color:var(--brand-surface)]" >
+    < section id = "signup" className = "scroll-mt-24 py-16 md:py-20 bg-[color:var(--brand-surface)]" >
       <div className="max-w-3xl mx-auto px-4 text-center">
         <h2 className="text-2xl md:text-3xl font-semibold">Get early access</h2>
         <p className="mt-3 text-[color:var(--brand-text-muted)]">Join the waitlist and we'll notify you when invites open. We respect your inbox.</p>
