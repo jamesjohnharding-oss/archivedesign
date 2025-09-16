@@ -10,7 +10,7 @@ const BRAND = {
   primaryMuted: "#EDE6D9", // light cream background from logo
   accent: "#F15A24", // bright orange icon from logo
   text: "#003B49", // reuse dark teal for text
-  textMuted: "#4B4B4B",
+  textMuted: "#4B4B4B",r
   surface: "#FFFFFF",
   surfaceAlt: "#FAF9F6",
   logoUrl: import.meta.env.BASE_URL + 'archivedesignai-logo.png',
@@ -87,13 +87,14 @@ export default function ArchivedesignLanding() {
           </motion.div>
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6, delay: 0.1 }} className="relative">
             <div className="aspect-[4/3] w-full rounded-3xl bg-[color:var(--brand-surface)] border border-black/5 shadow-sm overflow-hidden">
-              <div className="h-full w-full grid place-content-center text-center px-6">
-                <div>
-                  <p className="text-sm uppercase tracking-widest text-[color:var(--brand-text-muted)]">Preview</p>
-                  <p className="mt-2 text-xl font-semibold">Marketplace browse</p>
-                  <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">Drop in a screenshot or mockup here.</p>
-                </div>
-              </div>
+            <div className="h-full w-full flex items-center justify-center">
+              <img
+                src="/app-placeholder.png"
+                alt="App preview"
+                className="object-contain w-full h-full"
+              />
+             </div>
+            </div>
             </div>
             <div className="absolute -bottom-6 -right-6 hidden md:block p-4 rounded-2xl border border-black/5 shadow bg-[color:var(--brand-surface)]">
               <div className="text-xs text-[color:var(--brand-text-muted)]">Example filters</div>
