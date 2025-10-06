@@ -147,8 +147,8 @@ export default function ArchivedesignLanding() {
       < section id="features" className="py-16 md:py-20 bg-[color:var(--brand-surface-alt)] border-y border-black/5" >
         <div className="max-w-6xl mx-auto px-4">
           <div className="flex items-end justify-between gap-6">
-            <h2 className="text-2xl md:text-3xl font-semibold">Why Archivedesign.ai</h2>
-            <span className="text-sm text-[color:var(--brand-text-muted)]">For homeowners • architects • builders</span>
+            <h2 className="text-2xl md:text-3xl font-semibold">Why Archive Design AI</h2>
+            <span className="text-sm text-[color:var(--brand-text-muted)]">For homeowners and architects</span>
           </div>
           <div className="mt-8 grid md:grid-cols-3 gap-6">
             {features.map((f) => (
