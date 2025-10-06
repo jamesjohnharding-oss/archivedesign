@@ -228,18 +228,65 @@ export default function ArchivedesignLanding() {
         </div>
       </section >
 
-    {/* For Architects */}
-    <section id="for-architects" className="py-16 md:py-20 bg-[color:var(--brand-surface-alt)] border-t border-black/5">
-      <div className="max-w-6xl mx-auto px-4">
-        <h2 className="text-2xl md:text-3xl font-semibold">For Architects</h2>
-        <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
-          Sell and license your residential plans with <strong>Archive Design</strong>: marketplace connecting architects
-          and homeowners. Upload your plans once anf then enjoy earning royalties from them forever.
-        </p>
-        <p className="mt-3 text-[color:var(--brand-text-muted)] max-w-prose">
-          Showcase your work, reach new clients, and generate recurring revenue by sharing high-quality
-          plans designed for yor local market.
-        </p>
+        {/* For Architects */}
+        <section id="for-architects" className="py-16 md:py-20 bg-[color:var(--brand-surface-alt)] border-t border-black/5">
+          <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
+            {/* Left column: copy */}
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold">For Architects</h2>
+              <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
+                Turn your design library into ongoing income. 
+                <strong> Archive Dsign </strong> helps architects license residential plans, 
+                reach new clients, and earn royalties every time their work is used.
+              </p>
+              <p className="mt-3 text-[color:var(--brand-text-muted)] max-w-prose">
+                List your existing plans, showcase your portfolio, and be part of a new ecosystem where design intelligence meets technology.
+                Upload once and earn ongoing revenue.
+              </p>
+
+          <ul className="mt-6 space-y-3 text-sm text-[color:var(--brand-text-muted)]">
+            <li className="flex gap-3">
+              <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
+              License plans directly to homeowners.
+            </li>
+            <li className="flex gap-3">
+              <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
+              Earn passive income from designs you’ve already completed.
+            </li>
+            <li className="flex gap-3">
+              <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
+              Retain authorship and creative control.
+            </li>
+          </ul>
+
+          <div className="mt-7">
+            <a
+              href="#signup"
+              className="inline-flex items-center rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all"
+              style={{background:"var(--brand-accent)", color:"#fff"}}
+            >
+              List your plans
+            </a>
+          </div>
+        </div>
+
+        {/* Right column: feature cards */}
+        <div className="grid sm:grid-cols-2 gap-4">
+          {[
+            {t:"Portfolio exposure", b:"Your designs featured to a global audience of homeowners."},
+            {t:"Royalties", b:"Earn each time your plan is licensed or modified for a new site."},
+            {t:"AI matching", b:"Smart matching connects your plans to homeowner briefs automatically."},
+            {t:"Design protection", b:"Licenses ensure your IP and authorship stay intact."},
+          ].map(card => (
+            <div key={card.t} className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm">
+              <div className="h-10 w-10 rounded-xl grid place-content-center font-semibold" style={{ background:"var(--brand-primary-muted)", color:"var(--brand-accent)"}}>
+                {card.t.charAt(0)}
+              </div>
+              <h3 className="mt-3 font-semibold">{card.t}</h3>
+              <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">{card.b}</p>
+            </div>
+          ))}
+        </div>
       </div>
     </section>
 
