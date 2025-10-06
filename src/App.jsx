@@ -371,9 +371,14 @@ export default function ArchivedesignLanding() {
       < footer className="py-10 border-t border-black/5 bg-[color:var(--brand-surface)]" >
         <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
           <div className="flex items-center gap-3">
-            <img src={BRAND.logoUrl} alt={BRAND.logoAlt} className="h-6 w-auto" />
-            <span className="text-sm text-[color:var(--brand-text-muted)]">© {new Date().getFullYear()} Archivedesign.ai</span>
+          <img src="/favicon.png" alt="Archivedesign favicon" className="h-6 w-6 rounded-md shadow-sm" />
+          <span className="text-sm text-[color:var(--brand-text-muted)]">
+            © {new Date().getFullYear()} Archive Design AI
+            </span>
           </div>
+          <p className="text-xs text-[color:var(--brand-text-muted)] mt-1">
+            Proudly made in Sydney, Australia 🇦🇺
+          </p>
           <div className="flex items-center gap-5 text-sm">
             <a href="#" className="hover:opacity-80">Contact</a>
             <a href="#" className="hover:opacity-80">For Architects</a>
