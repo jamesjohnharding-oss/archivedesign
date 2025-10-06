@@ -56,10 +56,11 @@ export default function ArchivedesignLanding() {
             />
           </div>
           <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#how" className="hover:opacity-80">How it works</a>
-            <a href="#features" className="hover:opacity-80">Why us</a>
+            <a href="#how" className="hover:opacity-80">How It Works</a>
+            <a href="#features" className="hover:opacity-80">Why Us</a>
+            <a href="#for-homeowners" className="hover:opacity-80">For Homeowners</a>
             <a href="#for-architects" className="hover:opacity-80">For Architects</a>
-            <a href="#signup" className="hover:opacity-80">Early access</a>
+            <a href="#signup" className="hover:opacity-80">Early Access</a>
           </nav>
           <a href="#signup" className="inline-flex items-center rounded-2xl px-4 py-2 text-sm font-medium border border-black/10 shadow-sm hover:shadow transition-all" style={{ background: "var(--brand-accent)", color: "white" }}>Join waitlist</a>
         </div>
@@ -159,6 +160,56 @@ export default function ArchivedesignLanding() {
         </div>
       </section >
 
+        {/* For Homeowners */}
+        <section id="for-homeowners" className="py-16 md:py-20 bg-[color:var(--brand-surface)] border-t border-black/5">
+          <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
+            <div>
+              <h2 className="text-2xl md:text-3xl font-semibold">For Homeowners</h2>
+              <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
+                Browse architect-designed residential plans tailored to your local standards. 
+                Save time and money, then customise with the original architect before finalising.
+              </p>
+              <ul className="mt-6 space-y-3 text-sm text-[color:var(--brand-text-muted)]">
+                <li className="flex gap-3">
+                  <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
+                  Builder-ready documentation, aligned to local codes
+                </li>
+                <li className="flex gap-3">
+                  <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
+                  Transparent pricing with optional upgrades
+                </li>
+                <li className="flex gap-3">
+                  <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
+                  Light customisation by the original designer
+                </li>
+              </ul>
+              <div className="mt-7">
+                <a href="#signup" className="inline-flex items-center rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all" style={{background:"var(--brand-accent)", color:"#fff"}}>
+                  Join the waitlist
+                </a>
+              </div>
+            </div>
+
+            {/* Small highlight cards */}
+            <div className="grid sm:grid-cols-2 gap-4">
+              {[
+                {t:"Modern", b:"Curated contemporary plans from award-winning studios."},
+                {t:"Family-ready", b:"3–4BR layouts with efficient footprints."},
+                {t:"Compact sites", b:"Smart designs for narrow and irregular blocks."},
+                {t:"Sustainable options", b:"Passive design and energy-smart upgrades."},
+              ].map(card => (
+                <div key={card.t} className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm">
+                  <div className="h-10 w-10 rounded-xl grid place-content-center font-semibold" style={{ background:"var(--brand-primary-muted)", color:"var(--brand-accent)"}}>
+                    {card.t.charAt(0)}
+                  </div>
+                  <h3 className="mt-3 font-semibold">{card.t}</h3>
+                  <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">{card.b}</p>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
       {/* How it works */}
       < section id="how" className="scroll-mt-24 py-16 md:py-20" >
         <div className="max-w-6xl mx-auto px-4">
@@ -182,12 +233,12 @@ export default function ArchivedesignLanding() {
       <div className="max-w-6xl mx-auto px-4">
         <h2 className="text-2xl md:text-3xl font-semibold">For Architects</h2>
         <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
-          Sell and license your residential plans on <strong>archivedesign.ai</strong> — a marketplace connecting architects,
-          builders, and homeowners across Australia. Upload once, earn royalties forever.
+          Sell and license your residential plans with <strong>Archive Design</strong>: marketplace connecting architects
+          and homeowners. Upload your plans once anf then enjoy earning royalties from them forever.
         </p>
         <p className="mt-3 text-[color:var(--brand-text-muted)] max-w-prose">
-          Showcase your work, reach new clients, and create passive income by sharing high-quality,
-          builder-ready plans designed to Australian standards.
+          Showcase your work, reach new clients, and generate recurring revenue by sharing high-quality
+          plans designed for yor local market.
         </p>
       </div>
     </section>
