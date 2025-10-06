@@ -32,6 +32,29 @@ const steps = [
   { n: 4, title: "Build", body: "Hand over to your builder with compliant docs ready." },
 ];
 
+const architectFeatures = [
+  {
+    t: "Portfolio exposure",
+    b: "Your designs featured to a national audience of homeowners.",
+    icon: Image,
+  },
+  {
+    t: "Royalties",
+    b: "Earn each time your plan is licensed or modified for a new site.",
+    icon: DollarSign,
+  },
+  {
+    t: "AI matching",
+    b: "Smart matching connects your plans to homeowner briefs automatically.",
+    icon: Sparkles,
+  },
+  {
+    t: "Design protection",
+    b: "Licenses ensure your IP and authorship stay intact.",
+    icon: Shield,
+  },
+];
+
 export default function ArchivedesignLanding() {
   const styleVars = useMemo(() => ({
     "--brand-primary": BRAND.primary,
