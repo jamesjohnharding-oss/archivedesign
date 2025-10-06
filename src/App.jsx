@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { motion } from "framer-motion";
-import { Image, DollarSign, Sparkles, Shield } from "lucide-react";
+import { Image, DollarSign, Sparkles, Shield, Home, Ruler, Paintbrush, Leaf } from "lucide-react";
 
 
 /**
@@ -52,6 +52,29 @@ const architectFeatures = [
     t: "Design protection",
     b: "Licenses ensure your IP and authorship stay intact.",
     icon: Shield,
+  },
+];
+
+const homeownerFeatures = [
+  {
+    t: "Modern",
+    b: "Curated contemporary plans from award-winning studios.",
+    icon: Home,
+  },
+  {
+    t: "Family-ready",
+    b: "3–4 BR layouts with efficient footprints.",
+    icon: Ruler,
+  },
+  {
+    t: "Compact sites",
+    b: "Smart designs for narrow and irregular blocks.",
+    icon: Paintbrush,
+  },
+  {
+    t: "Sustainable options",
+    b: "Passive design and energy-smart upgrades.",
+    icon: Leaf,
   },
 ];
 
@@ -217,21 +240,22 @@ export default function ArchivedesignLanding() {
 
             {/* Small highlight cards */}
             <div className="grid sm:grid-cols-2 gap-4">
-              {[
-                {t:"Modern", b:"Curated contemporary plans from award-winning studios."},
-                {t:"Family-ready", b:"3–4BR layouts with efficient footprints."},
-                {t:"Compact sites", b:"Smart designs for narrow and irregular blocks."},
-                {t:"Sustainable options", b:"Passive design and energy-smart upgrades."},
-              ].map(card => (
-                <div key={card.t} className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm">
-                  <div className="h-10 w-10 rounded-xl grid place-content-center font-semibold" style={{ background:"var(--brand-primary-muted)", color:"var(--brand-accent)"}}>
-                    {card.t.charAt(0)}
-                  </div>
-                  <h3 className="mt-3 font-semibold">{card.t}</h3>
-                  <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">{card.b}</p>
-                </div>
-              ))}
-            </div>
+              {homeownerFeatures.map(({ t, b, icon: Icon }) => (
+              <div
+      key={t}
+      className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
+          >
+          <div
+            className="h-10 w-10 rounded-xl grid place-content-center bg-[color:var(--brand-primary-muted)] text-[color:var(--brand-accent)] transition-shadow duration-200 hover:shadow"
+            aria-hidden="true"
+          >
+            <Icon className="h-6 w-6" />
+          </div>
+          <h3 className="mt-3 font-semibold">{t}</h3>
+          <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">{b}</p>
+        </div>
+      ))}
+          </div>
           </div>
         </section>
 
