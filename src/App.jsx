@@ -58,6 +58,7 @@ export default function ArchivedesignLanding() {
           <nav className="hidden md:flex items-center gap-6 text-sm">
             <a href="#how" className="hover:opacity-80">How it works</a>
             <a href="#features" className="hover:opacity-80">Why us</a>
+            <a href="#for-architects" className="hover:opacity-80">For Architects</a>
             <a href="#signup" className="hover:opacity-80">Early access</a>
           </nav>
           <a href="#signup" className="inline-flex items-center rounded-2xl px-4 py-2 text-sm font-medium border border-black/10 shadow-sm hover:shadow transition-all" style={{ background: "var(--brand-accent)", color: "white" }}>Join waitlist</a>
@@ -175,6 +176,21 @@ export default function ArchivedesignLanding() {
           </ol>
         </div>
       </section >
+
+    {/* For Architects */}
+    <section id="for-architects" className="py-16 md:py-20 bg-[color:var(--brand-surface-alt)] border-t border-black/5">
+      <div className="max-w-6xl mx-auto px-4">
+        <h2 className="text-2xl md:text-3xl font-semibold">For Architects</h2>
+        <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
+          Sell and license your residential plans on <strong>archivedesign.ai</strong> — a marketplace connecting architects,
+          builders, and homeowners across Australia. Upload once, earn royalties forever.
+        </p>
+        <p className="mt-3 text-[color:var(--brand-text-muted)] max-w-prose">
+          Showcase your work, reach new clients, and create passive income by sharing high-quality,
+          builder-ready plans designed to Australian standards.
+        </p>
+      </div>
+    </section>
 
       {/* Signup */}
       < section id="signup" className="scroll-mt-24 py-16 md:py-20 bg-[color:var(--brand-surface)]" >
