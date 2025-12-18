@@ -163,7 +163,7 @@ export default function ArchivedesignLanding() {
               style={{ backgroundColor: "#fff6e2" }}>
               <div className="h-full w-full flex items-center justify-center">
                 <img
-                  src="/app-placeholder.png"
+                  src="/archive design ai.jpg"
                   alt="App preview"
                   className="object-contain w-full h-full"
                 />
@@ -176,7 +176,7 @@ export default function ArchivedesignLanding() {
             <div className="absolute -bottom-6 -right-6 hidden md:block p-4 rounded-2xl border border-black/5 shadow bg-[color:var(--brand-surface)]">
               <div className="text-xs text-[color:var(--brand-text-muted)]">Example filters</div>
               <div className="mt-2 flex gap-2 flex-wrap">
-                {["Block 10–13m", "Modern", "3BR", "Budget $400–600k"].map((t) => (
+                {["Block 10–13m", "Modern", "3BR", "Budget $1.5M-$2.5M"].map((t) => (
                   <span key={t} className="text-xs px-2 py-1 rounded-full border border-black/10">
                     {t}
                   </span>
