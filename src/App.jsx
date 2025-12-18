@@ -128,11 +128,10 @@ export default function ArchivedesignLanding() {
           {/* Left column: text */}
           <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
             <h1 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
-              Premium residential plans — faster, smarter, fairly paid.
+              Find the right home design without the guesswork.
             </h1>
             <p className="mt-5 text-base md:text-lg text-[color:var(--brand-text-muted)] max-w-prose">
-              We connect homeowners and architects on a marketplace for beautiful, design-ready plans.
-              Save months, control costs, and share value with the original designer.
+            We help homeowners shortlist architect-designed plans that genuinely match their brief, and help architects place their work with the right clients.
             </p>
             <div className="mt-7 flex flex-col sm:flex-row gap-3">
               <a
@@ -150,7 +149,6 @@ export default function ArchivedesignLanding() {
               </a>
             </div>
             <div className="mt-6 flex items-center gap-4 text-xs text-[color:var(--brand-text-muted)]">
-              <span>AU-focused • Builder-ready • Revenue for architects</span>
             </div>
           </motion.div>
 
