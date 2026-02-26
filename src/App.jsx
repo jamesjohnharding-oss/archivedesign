@@ -63,10 +63,6 @@ export default function ArchivedesignLanding() {
         <section className="hero">
           <div className="hero-inner">
             <div className="hero-left">
-              <div className="hero-eyebrow">
-                <span className="hero-eyebrow-dot" />
-                500+ Australian homeowners
-              </div>
 
               <h1 className="hero-headline">
                 Find an architect<br />
