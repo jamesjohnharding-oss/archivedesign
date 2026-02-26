@@ -52,7 +52,6 @@ export default function ArchivedesignLanding() {
           </ul>
 
           <div className="nav-actions">
-            <a href="#" className="btn-ghost">Log in</a>
             <a href="#waitlist" className="btn-waitlist">Join Waitlist</a>
             <a href="#" className="btn-primary">Get Started</a>
           </div>
