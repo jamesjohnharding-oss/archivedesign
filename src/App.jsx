@@ -1,390 +1,309 @@
-import { useMemo } from "react";
-import { motion } from "framer-motion";
-import { Image, DollarSign, Sparkles, Shield, Home, Ruler, Paintbrush, Leaf } from "lucide-react";
+import React, { useState } from "react";
 
-
-/**
- * Archivedesign.ai Landing — React + Tailwind + Framer Motion
- * Brand palette refined directly from uploaded logo colors.
- */
-const BRAND = {
-  primary: "#003B49", // dark teal/blue from text in logo
-  primaryMuted: "#EDE6D9", // light cream background from logo
-  accent: "#F15A24", // bright orange icon from logo
-  text: "#003B49", // reuse dark teal for text
-  textMuted: "#4B4B4B",
-  surface: "#FFFFFF",
-  surfaceAlt: "#FAF9F6",
-  logoUrl: import.meta.env.BASE_URL + 'archivedesignai-logo.png',
-  logoAlt: 'Archivedesign.ai logo'
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "Organization",
+      "name": "Archive Design",
+      "url": "https://archivedesign.ai/",
+      "logo": "https://archivedesign.ai/logo.png"
+    },
+    {
+      "@type": "WebSite",
+      "name": "Archive Design",
+      "url": "https://archivedesign.ai/"
+    }
+  ]
 };
 
-const features = [
-  { title: "Plan marketplace", body: "Architect-designed plans licensed for single projects and tailored to your site." },
-  { title: "Royalties for architects", body: "Creators earn ongoing revenue while homeowners get premium design at lower cost." },
-  { title: "Builder-ready", body: "Documentation bundles aligned to Australian standards and local conditions." },
-];
-
-const steps = [
-  { n: 1, title: "Browse", body: "Explore verified, high-quality residential plans." },
-  { n: 2, title: "Match", body: "Filter by block size, style, and budget. Add options." },
-  { n: 3, title: "Customize", body: "Engage the original architect for light edits or add-ons." },
-  { n: 4, title: "Build", body: "Hand over to your builder with compliant docs ready." },
-];
-
-const architectFeatures = [
-  {
-    t: "Portfolio exposure",
-    b: "Your designs featured to a national audience of homeowners.",
-    icon: Image,
-  },
-  {
-    t: "Royalties",
-    b: "Earn each time your plan is licensed or modified for a new site.",
-    icon: DollarSign,
-  },
-  {
-    t: "AI matching",
-    b: "Smart matching connects your plans to homeowner briefs automatically.",
-    icon: Sparkles,
-  },
-  {
-    t: "Design protection",
-    b: "Licenses ensure your IP and authorship stay intact.",
-    icon: Shield,
-  },
-];
-
-const homeownerFeatures = [
-  {
-    t: "Modern",
-    b: "Curated contemporary plans from award-winning studios.",
-    icon: Home,
-  },
-  {
-    t: "Family-ready",
-    b: "3–4 BR layouts with efficient footprints.",
-    icon: Ruler,
-  },
-  {
-    t: "Compact sites",
-    b: "Smart designs for narrow and irregular blocks.",
-    icon: Paintbrush,
-  },
-  {
-    t: "Sustainable options",
-    b: "Passive design and energy-smart upgrades.",
-    icon: Leaf,
-  },
-];
-
 export default function ArchivedesignLanding() {
-  const styleVars = useMemo(() => ({
-    "--brand-primary": BRAND.primary,
-    "--brand-primary-muted": BRAND.primaryMuted,
-    "--brand-accent": BRAND.accent,
-    "--brand-text": BRAND.text,
-    "--brand-text-muted": BRAND.textMuted,
-    "--brand-surface": BRAND.surface,
-    "--brand-surface-alt": BRAND.surfaceAlt,
-  }), []);
+  const [joined, setJoined] = useState(false);
+
+  function handleWaitlist(e) {
+    e && e.preventDefault();
+    setJoined(true);
+  }
 
   return (
-    <div className="min-h-screen w-full bg-[color:var(--brand-primary-muted)] text-[color:var(--brand-text)]" style={styleVars}>
-      {/* Nav */}
-      <header
-        className="sticky top-0 z-40 border-b border-black/5"
-        style={{ backgroundColor: "#fef6e2" }}>
-        <div className="max-w-6xl mx-auto px-4 py-3 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <img
-              src={BRAND.logoUrl}
-              alt={BRAND.logoAlt}
-              className="h-16 md:h-20 w-auto"
-            />
-          </div>
-          <nav className="hidden md:flex items-center gap-6 text-sm">
-            <a href="#how" className="hover:opacity-80">How It Works</a>
-            <a href="#features" className="hover:opacity-80">Why Us</a>
-            <a href="#for-homeowners" className="hover:opacity-80">For Homeowners</a>
-            <a href="#for-architects" className="hover:opacity-80">For Architects</a>
-            <a href="#signup" className="hover:opacity-80">Early Access</a>
-          </nav>
-          <a href="#signup" className="inline-flex items-center rounded-2xl px-4 py-2 text-sm font-medium border border-black/10 shadow-sm hover:shadow transition-all" style={{ background: "var(--brand-accent)", color: "white" }}>Join waitlist</a>
-        </div>
-      </header>
+    <div>
+      <div className="top-bar" />
 
-      {/* Hero */}
-      <section className="relative overflow-hidden">
-        {/* decorative background blob */}
-        <div className="pointer-events-none absolute inset-0" aria-hidden>
-          <div
-            className="h-64 w-64 md:h-[28rem] md:w-[28rem] rounded-full blur-3xl opacity-20"
-            style={{ background: "var(--brand-accent)" }}
-          />
-        </div>
-
-        <div className="max-w-6xl mx-auto px-4 pt-14 pb-16 md:pt-24 md:pb-24 grid md:grid-cols-2 gap-10 items-center">
-          {/* Left column: text */}
-          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-            <h1 className="text-3xl md:text-5xl font-semibold leading-tight tracking-tight">
-              Find the right home design without the guesswork.
-            </h1>
-            <p className="mt-5 text-base md:text-lg text-[color:var(--brand-text-muted)] max-w-prose">
-            We help homeowners shortlist architect-designed plans that genuinely match their brief, and help architects place their work with the right clients.
-            </p>
-            <div className="mt-7 flex flex-col sm:flex-row gap-3">
-              <a
-                href="#signup"
-                className="inline-flex justify-center items-center rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all"
-                style={{ background: "var(--brand-accent)", color: "white" }}
-              >
-                Get early access
-              </a>
-              <a
-                href="#how"
-                className="inline-flex justify-center items-center rounded-2xl px-5 py-3 font-medium border border-black/10 hover:bg-black/5 transition-all"
-              >
-                See how it works
-              </a>
-            </div>
-            <div className="mt-6 flex items-center gap-4 text-xs text-[color:var(--brand-text-muted)]">
-            </div>
-          </motion.div>
-
-          {/* Right column: image + overlay */}
-          <motion.div
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
-            className="relative"
-          >
-            <div className="aspect-[4/3] w-full rounded-3xl border border-black/5 shadow-sm overflow-hidden"
-              style={{ backgroundColor: "#fff6e2" }}>
-              <div className="h-full w-full flex items-center justify-center">
-                <img
-                  src="/archive design ai.jpg"
-                  alt="App preview"
-                  className="object-contain w-full h-full"
-                />
-              </div>
-            </div>
-
-
-
-            {/* overlay panel stays INSIDE this motion.div */}
-            <div className="absolute -bottom-6 -right-6 hidden md:block p-4 rounded-2xl border border-black/5 shadow bg-[color:var(--brand-surface)]">
-              <div className="text-xs text-[color:var(--brand-text-muted)]">Example filters</div>
-              <div className="mt-2 flex gap-2 flex-wrap">
-                {["Block 10–13m", "Modern", "3BR", "Budget $1.5M-$2.5M"].map((t) => (
-                  <span key={t} className="text-xs px-2 py-1 rounded-full border border-black/10">
-                    {t}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Features */}
-      < section id="features" className="py-16 md:py-20 bg-[color:var(--brand-surface-alt)] border-y border-black/5" >
-        <div className="max-w-6xl mx-auto px-4">
-          <div className="flex items-end justify-between gap-6">
-            <h2 className="text-2xl md:text-3xl font-semibold">Why Archive Design AI</h2>
-            <span className="text-sm text-[color:var(--brand-text-muted)]">For homeowners and architects</span>
-          </div>
-          <div className="mt-8 grid md:grid-cols-3 gap-6">
-            {features.map((f) => (
-              <motion.div key={f.title} initial={{ opacity: 0, y: 8 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4 }} className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm">
-                <div className="h-10 w-10 rounded-xl grid place-content-center font-semibold" style={{ background: "var(--brand-primary-muted)", color: "var(--brand-accent)" }}>{f.title.charAt(0)}</div>
-                <h3 className="mt-4 font-semibold text-lg">{f.title}</h3>
-                <p className="mt-2 text-[color:var(--brand-text-muted)] text-sm leading-relaxed">{f.body}</p>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section >
-
-        {/* For Homeowners */}
-        <section id="for-homeowners" className="py-16 md:py-20 bg-[color:var(--brand-surface)] border-t border-black/5">
-          <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
+      <nav>
+        <div className="nav-inner">
+          <a className="logo" href="#">
+            <svg className="logo-mark" viewBox="0 0 28 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <rect x="0.75" y="0.75" width="26.5" height="30.5" stroke="#1A5C6B" strokeWidth="1.5" />
+              <line x1="6" y1="5" x2="6" y2="31.5" stroke="#1A5C6B" strokeWidth="1.5" />
+              <line x1="6" y1="5" x2="22" y2="5" stroke="#1A5C6B" strokeWidth="1.5" />
+              <line x1="22" y1="5" x2="22" y2="31.5" stroke="#1A5C6B" strokeWidth="1.5" />
+              <circle cx="14" cy="31.5" r="2.5" fill="#E8952A" />
+            </svg>
             <div>
-              <h2 className="text-2xl md:text-3xl font-semibold">For Homeowners</h2>
-              <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
-                Browse architect-designed residential plans tailored to your local standards. 
-                Save time and money, then customise with the original architect before finalising.
-              </p>
-              <ul className="mt-6 space-y-3 text-sm text-[color:var(--brand-text-muted)]">
-                <li className="flex gap-3">
-                  <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
-                  Builder-ready documentation, aligned to local codes
-                </li>
-                <li className="flex gap-3">
-                  <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
-                  Transparent pricing with optional upgrades
-                </li>
-                <li className="flex gap-3">
-                  <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
-                  Light customisation by the original designer
-                </li>
-              </ul>
-              <div className="mt-7">
-                <a href="#signup" className="inline-flex items-center rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all" style={{background:"var(--brand-accent)", color:"#fff"}}>
-                  Join the waitlist
-                </a>
+              <span className="logo-text">ARCHIVE</span>
+              <span className="logo-sub">DESIGN</span>
+            </div>
+          </a>
+
+          <ul className="nav-links">
+            <li><a href="#">For Homeowners</a></li>
+            <li><a href="#">For Architects</a></li>
+            <li><a href="#">About</a></li>
+          </ul>
+
+          <div className="nav-actions">
+            <a href="#waitlist" className="btn-waitlist">Join Waitlist</a>
+            <a href="#" className="btn-primary">Get Started</a>
+          </div>
+        </div>
+      </nav>
+
+      <main>
+        <section className="hero">
+          <div className="hero-inner">
+            <div className="hero-left">
+
+              <h1 className="hero-headline">
+                Find an architect<br />
+                whose work<br />
+                <em>already fits.</em>
+              </h1>
+
+              <p className="hero-sub">We match considered homeowners with architects whose proven designs already align with your vision and budget — avoiding blank-page uncertainty.</p>
+
+              <div className="hero-actions">
+                <a href="#" className="btn-primary">Find Your Architect</a>
+                <a href="#" className="btn-secondary">For Architects</a>
               </div>
             </div>
 
-            {/* Small highlight cards */}
-            <div className="grid sm:grid-cols-2 gap-4">
-              {homeownerFeatures.map(({ t, b, icon: Icon }) => (
-              <div
-      key={t}
-      className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-0.5"
-          >
-          <div
-            className="h-10 w-10 rounded-xl grid place-content-center bg-[color:var(--brand-primary-muted)] text-[color:var(--brand-accent)] transition-shadow duration-200 hover:shadow"
-            aria-hidden="true"
-          >
-            <Icon className="h-6 w-6" />
-          </div>
-          <h3 className="mt-3 font-semibold">{t}</h3>
-          <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">{b}</p>
-        </div>
-      ))}
-          </div>
+            <div className="hero-right">
+              <div className="img-card">
+                <div className="img-card-inner">
+                  <div className="img-placeholder scene-exterior" />
+                  <span className="img-tag">Exterior</span>
+                </div>
+              </div>
+              <div className="img-card">
+                <div className="img-card-inner">
+                  <div className="img-placeholder scene-kitchen" />
+                  <span className="img-tag">Kitchen</span>
+                </div>
+              </div>
+              <div className="img-card">
+                <div className="img-card-inner">
+                  <div className="img-placeholder scene-living" />
+                  <span className="img-tag">Living</span>
+                </div>
+              </div>
+              <div className="img-card">
+                <div className="img-card-inner">
+                  <div className="img-placeholder scene-garden" />
+                  <span className="img-tag">Landscape</span>
+                </div>
+              </div>
+            </div>
           </div>
         </section>
 
-      {/* How it works */}
-      < section id="how" className="scroll-mt-24 py-16 md:py-20" >
-        <div className="max-w-6xl mx-auto px-4">
-          <h2 className="text-2xl md:text-3xl font-semibold">How it works</h2>
-          <ol className="mt-8 grid md:grid-cols-4 gap-6">
-            {steps.map((s) => (
-              <motion.li key={s.n} initial={{ opacity: 0, y: 10 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }} transition={{ duration: 0.4, delay: s.n * 0.05 }} className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm">
-                <div className="flex items-center gap-3">
-                  <div className="h-9 w-9 rounded-full grid place-content-center font-semibold" style={{ background: "var(--brand-accent)", color: "white" }}>{s.n}</div>
-                  <h3 className="font-semibold">{s.title}</h3>
-                </div>
-                <p className="mt-3 text-sm text-[color:var(--brand-text-muted)] leading-relaxed">{s.body}</p>
-              </motion.li>
-            ))}
-          </ol>
-        </div>
-      </section >
+        <section className="how-it-works">
+          <div className="container">
+            <div className="section-header">
+              <span className="section-label">The Process</span>
+              <h2 className="section-title">How it works</h2>
+              <p className="section-sub">A transparent pathway to your architect-designed home.</p>
+            </div>
 
-              {/* For Architects */}
-        <section id="for-architects" className="py-16 md:py-20 bg-[color:var(--brand-surface-alt)] border-t border-black/5">
-          <div className="max-w-6xl mx-auto px-4 grid md:grid-cols-2 gap-10 items-start">
-            {/* Left column: copy */}
-            <div>
-            <h2 className="text-2xl md:text-3xl font-semibold">For Architects</h2>
-            <p className="mt-4 text-[color:var(--brand-text-muted)] max-w-prose">
-              Turn your design library into ongoing income. <strong>Archive Design</strong> helps architects license
-              residential plans, reach new clients, and earn royalties every time their work is built.
-            </p>
-            <p className="mt-3 text-[color:var(--brand-text-muted)] max-w-prose">
-              List your existing plans, showcase your portfolio, and be part of a new ecosystem where design intelligence meets technology.
-              Upload once and earn forever.
-            </p>
-
-            <ul className="mt-6 space-y-3 text-sm text-[color:var(--brand-text-muted)]">
-              <li className="flex gap-3">
-                <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
-                License plans directly to homeowners.
-              </li>
-              <li className="flex gap-3">
-                <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
-                Earn passive income from designs you’ve already completed.
-              </li>
-              <li className="flex gap-3">
-                <span className="h-6 w-6 shrink-0 rounded-full grid place-content-center" style={{background:"var(--brand-accent)", color:"#fff"}}>✓</span>
-                Retain authorship and creative control.
-              </li>
-            </ul>
-
-            <div className="mt-7">
-              <a
-                href="#signup"
-                className="inline-flex items-center rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all"
-                style={{background:"var(--brand-accent)", color:"#fff"}}
-              >
-                List your plans
-              </a>
+            <div className="steps">
+              <div className="step">
+                <div className="step-number">01</div>
+                <h3 className="step-title">Explore Proven Designs</h3>
+                <p className="step-body">Browse a curated library of built Australian homes to identify the aesthetic and functional qualities you love.</p>
+              </div>
+              <div className="step">
+                <div className="step-number">02</div>
+                <h3 className="step-title">Get Matched on Fit</h3>
+                <p className="step-body">We connect you with the specific architects behind the work you admire, ensuring immediate alignment.</p>
+              </div>
+              <div className="step">
+                <div className="step-number">03</div>
+                <h3 className="step-title">Tailor to Your Site</h3>
+                <p className="step-body">Engage your architect to adapt their proven design principles to your specific site, budget, and lifestyle.</p>
+              </div>
             </div>
           </div>
+        </section>
 
-          {/* Right column: icon cards */}
-          <div className="grid sm:grid-cols-2 gap-4">
-            {architectFeatures.map(({ t, b, icon: Icon }) => (
-              <div key={t} className="rounded-3xl p-5 border border-black/10 bg-white shadow-sm transition-transform duration-200 hover:-translate-y-0.5">
-                <div
-                  className="h-10 w-10 rounded-xl grid place-content-center bg-[color:var(--brand-primary-muted)] text-[color:var(--brand-accent)] transition-shadow duration-200 hover:shadow"
-                  aria-hidden="true"
-                >
-                  <Icon className="h-6 w-6" />
+        <section className="value-props">
+          <div className="container">
+            <div className="section-header">
+              <h2 className="section-title">Alignment creates<br />better architecture.</h2>
+            </div>
+
+            <div className="value-cols">
+              <div className="value-col">
+                <div className="value-col-header">
+                  <svg className="door-icon" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.75" y="0.75" width="30.5" height="34.5" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <line x1="6.5" y1="5.5" x2="6.5" y2="35.25" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <line x1="6.5" y1="5.5" x2="25.5" y2="5.5" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <line x1="25.5" y1="5.5" x2="25.5" y2="35.25" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <circle cx="16" cy="35.25" r="2.5" fill="#E8952A"/>
+                  </svg>
+                  <span className="value-col-title">For Homeowners</span>
                 </div>
-                <h3 className="mt-3 font-semibold">{t}</h3>
-                <p className="mt-1 text-sm text-[color:var(--brand-text-muted)]">{b}</p>
+
+                <ul className="value-list">
+                  <li className="value-item">
+                    <div className="value-item-header">
+                      <span className="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                      <span className="value-item-title">Start from work you already love</span>
+                    </div>
+                    <p className="value-item-body">Eliminate the risk of misinterpretation by pointing to a proven design as your starting point.</p>
+                  </li>
+                  <li className="value-item">
+                    <div className="value-item-header">
+                      <span className="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                      <span className="value-item-title">Avoid starting from zero</span>
+                    </div>
+                    <p className="value-item-body">Save months of schematic design time by adapting established principles rather than reinventing the wheel.</p>
+                  </li>
+                  <li className="value-item">
+                    <div className="value-item-header">
+                      <span className="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                      <span className="value-item-title">Clarity on scope and expectations</span>
+                    </div>
+                    <p className="value-item-body">See tangible examples of what your budget can achieve before you commit to fees.</p>
+                  </li>
+                </ul>
+                <a href="#" className="text-link">Learn more about the process</a>
               </div>
-            ))}
+
+              <div className="value-col">
+                <div className="value-col-header">
+                  <svg className="door-icon" viewBox="0 0 32 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <rect x="0.75" y="0.75" width="30.5" height="34.5" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <line x1="6.5" y1="5.5" x2="6.5" y2="35.25" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <line x1="6.5" y1="5.5" x2="25.5" y2="5.5" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <line x1="25.5" y1="5.5" x2="25.5" y2="35.25" stroke="#1A5C6B" strokeWidth="1.5"/>
+                    <circle cx="16" cy="35.25" r="2.5" fill="#E8952A"/>
+                  </svg>
+                  <span className="value-col-title">For Architects</span>
+                </div>
+
+                <ul className="value-list">
+                  <li className="value-item">
+                    <div className="value-item-header">
+                      <span className="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                      <span className="value-item-title">Meet pre-aligned clients</span>
+                    </div>
+                    <p className="value-item-body">Connect with educated homeowners who specifically approached you because they love your past work.</p>
+                  </li>
+                  <li className="value-item">
+                    <div className="value-item-header">
+                      <span className="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                      <span className="value-item-title">Replace speculative enquiries</span>
+                    </div>
+                    <p className="value-item-body">Filter out the noise of unqualified leads and focus on clients who are ready to build.</p>
+                  </li>
+                  <li className="value-item">
+                    <div className="value-item-header">
+                      <span className="check"><svg viewBox="0 0 12 12"><polyline points="2,6 5,9 10,3"/></svg></span>
+                      <span className="value-item-title">Turn built work into repeat projects</span>
+                    </div>
+                    <p className="value-item-body">Leverage your IP. Your portfolio becomes a passive engine for generating new, aligned commissions.</p>
+                  </li>
+                </ul>
+                <a href="#" className="text-link">Partner with us</a>
+              </div>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-
-      {/* Signup */}
-      < section id="signup" className="scroll-mt-24 py-16 md:py-20 bg-[color:var(--brand-surface)]" >
-        <div className="max-w-3xl mx-auto px-4 text-center">
-          <h2 className="text-2xl md:text-3xl font-semibold">Get early access</h2>
-          <p className="mt-3 text-[color:var(--brand-text-muted)]">Join the waitlist and we'll notify you when invites open. We respect your inbox.</p>
-          <form
-            action="https://formspree.io/f/xdklvqrv"
-            method="POST"
-            className="mt-6 mx-auto max-w-xl flex flex-col sm:flex-row gap-3"
-          >
-            <input
-              type="email"
-              name="email"
-              required
-              placeholder="you@home.com.au"
-              className="flex-1 rounded-2xl px-4 py-3 border border-black/10 focus:outline-none focus:ring-2"
-            />
-            <button
-              type="submit"
-              className="rounded-2xl px-5 py-3 font-medium shadow hover:shadow-md transition-all"
-              style={{ background: "var(--brand-accent)", color: "white" }}
-            >
-              Join waitlist
-            </button>
-          </form>
-
-          <p className="mt-2 text-xs text-[color:var(--brand-text-muted)]">By subscribing you agree to our <a href="#" className="underline">Terms</a> and <a href="#" className="underline">Privacy Policy</a>.</p>
-        </div>
-      </section >
-
-      {/* Footer */}
-      < footer className="py-10 border-t border-black/5 bg-[color:var(--brand-surface)]" >
-        <div className="max-w-6xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
-          <div className="flex items-center gap-3">
-          <img src="/favicon.png" alt="Archivedesign favicon" className="h-6 w-6 rounded-md shadow-sm" />
-          <span className="text-sm text-[color:var(--brand-text-muted)]">
-            © {new Date().getFullYear()} Archive Design AI
-            </span>
+        <section className="architect-band">
+          <div className="architect-band-inner">
+            <div className="band-pill">Architect Partnership</div>
+            <h2 className="band-headline">Fewer Leads.<br/>Better Projects.</h2>
+            <p className="band-sub">Join a curated network of Australia's best residential architects. We filter for serious homeowners who value design quality, not just the lowest fee.</p>
+            <div className="band-actions">
+              <a href="#" className="btn-band-primary">Apply as an Architect</a>
+              <a href="#" className="btn-band-secondary">View Criteria</a>
+            </div>
           </div>
-          <p className="text-xs text-[color:var(--brand-text-muted)] mt-1">
-            Proudly made in Sydney, Australia 🇦🇺
-          </p>
-          <div className="flex items-center gap-5 text-sm">
-            <a href="#" className="hover:opacity-80">Contact</a>
-            <a href="#" className="hover:opacity-80">For Architects</a>
-            <a href="#" className="hover:opacity-80">For Builders</a>
-            <a href="#" className="hover:opacity-80">LinkedIn</a>
+        </section>
+
+        <section className="final-cta">
+          <div className="final-cta-inner">
+            <h2 className="final-cta-headline">Start in the right place.</h2>
+            <p className="final-cta-sub">Don't begin your project with a blank page. Begin with confidence.</p>
+            <div className="final-cta-actions">
+              <a href="#" className="btn-primary">Find Your Architect</a>
+              <a href="#" className="btn-secondary">Browse Homes</a>
+            </div>
+            <div className="amber-dot-anchor" />
           </div>
-        </div>
-      </footer >
-    </div >
+        </section>
+
+        <section className="waitlist" id="waitlist">
+          <div className="waitlist-inner">
+            <div className="waitlist-mark">
+              <svg width="40" height="46" viewBox="0 0 40 46" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <rect x="0.75" y="0.75" width="38.5" height="44.5" stroke="#F7F4EE" strokeWidth="1.5"/>
+                <line x1="9" y1="7" x2="9" y2="45.5" stroke="#F7F4EE" strokeWidth="1.5"/>
+                <line x1="9" y1="7" x2="31" y2="7" stroke="#F7F4EE" strokeWidth="1.5"/>
+                <line x1="31" y1="7" x2="31" y2="45.5" stroke="#F7F4EE" strokeWidth="1.5"/>
+                <circle cx="20" cy="45.5" r="3.5" fill="#E8952A"/>
+              </svg>
+            </div>
+
+            <div className="waitlist-content">
+              <span className="waitlist-label">Early Access</span>
+              <h2 className="waitlist-headline">Be first through the door.</h2>
+              <p className="waitlist-sub">Archive Design is launching soon across Australia. Join the waitlist and we'll introduce you to the right architect the moment we open.</p>
+            </div>
+
+            {!joined ? (
+              <form className="waitlist-form" onSubmit={handleWaitlist}>
+                <div className="waitlist-input-row">
+                  <input type="email" className="waitlist-input" placeholder="your@email.com" required aria-label="Email address" />
+                  <button type="submit" className="btn-waitlist-submit">
+                    Join Waitlist
+                    <svg width="14" height="14" viewBox="0 0 14 14" fill="none" aria-hidden="true"><path d="M2 7h10M8 3l4 4-4 4" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+                  </button>
+                </div>
+                <p className="waitlist-disclaimer">No spam. Unsubscribe anytime. We'll only contact you when we're ready for you.</p>
+              </form>
+            ) : (
+              <div className="waitlist-success visible" id="waitlist-success" aria-live="polite">
+                <div className="success-dot" />
+                <p>You're on the list. We'll be in touch soon.</p>
+              </div>
+            )}
+
+          </div>
+        </section>
+
+        <footer>
+          <div className="footer-inner">
+            <a className="logo footer-logo" href="#">
+              <svg width="22" height="24" viewBox="0 0 28 32" fill="none">
+                <rect x="0.75" y="0.75" width="26.5" height="30.5" stroke="rgba(247,244,238,0.6)" strokeWidth="1.5"/>
+                <line x1="6" y1="5" x2="6" y2="31.5" stroke="rgba(247,244,238,0.6)" strokeWidth="1.5"/>
+                <line x1="6" y1="5" x2="22" y2="5" stroke="rgba(247,244,238,0.6)" strokeWidth="1.5"/>
+                <line x1="22" y1="5" x2="22" y2="31.5" stroke="rgba(247,244,238,0.6)" strokeWidth="1.5"/>
+                <circle cx="14" cy="31.5" r="2.5" fill="#E8952A"/>
+              </svg>
+              <div>
+                <span className="logo-text">ARCHIVE</span>
+                <span className="logo-sub">DESIGN</span>
+              </div>
+            </a>
+            <span className="footer-note">© 2024 Archive Design. For homeowners and architects across Australia.</span>
+          </div>
+        </footer>
+
+        <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }} />
+      </main>
+    </div>
   );
 }
