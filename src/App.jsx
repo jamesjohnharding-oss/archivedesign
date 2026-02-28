@@ -355,7 +355,7 @@ export default function ArchivedesignLanding() {
                 <span className="logo-sub">DESIGN</span>
               </div>
             </a>
-            <span className="footer-note">© 2024 Archive Design. For homeowners and architects across Australia.</span>
+            <span className="footer-note">© {new Date().getFullYear()} Archive Design. For homeowners and architects across Australia.</span>
           </div>
         </footer>
 
