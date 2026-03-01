@@ -19,6 +19,7 @@ const jsonLd = {
 };
 
 export default function ArchivedesignLanding() {
+  const [menuOpen, setMenuOpen] = React.useState(false);
 
   return (
     <div>
@@ -49,6 +50,26 @@ export default function ArchivedesignLanding() {
           <div className="nav-actions">
             <a href="#waitlist" className="btn-waitlist">Join Waitlist</a>
             <a href="#" className="btn-primary">Get Started</a>
+          </div>
+
+          {/* mobile menu toggle button */}
+          <button
+            className="mobile-menu-button"
+            aria-label="Menu"
+            onClick={() => setMenuOpen(prev => !prev)}
+          >
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+              <path d="M4 6h16M4 12h16M4 18h16" />
+            </svg>
+          </button>
+
+          {/* mobile menu panel */}
+          <div className={"mobile-menu" + (menuOpen ? " open" : "")}>
+            <a href="#" onClick={() => setMenuOpen(false)}>For Homeowners</a>
+            <a href="#" onClick={() => setMenuOpen(false)}>For Architects</a>
+            <a href="#" onClick={() => setMenuOpen(false)}>About</a>
+            <a href="#waitlist" className="btn-waitlist" onClick={() => setMenuOpen(false)}>Join Waitlist</a>
+            <a href="#" className="btn-primary" onClick={() => setMenuOpen(false)}>Get Started</a>
           </div>
         </div>
       </nav>
