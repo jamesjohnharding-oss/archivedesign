@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 
 const NavLogo = () => (
   <Link to="/" className="logo">
@@ -77,10 +77,24 @@ export default function Layout({ children }) {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
+  const navigate = useNavigate();
   const path = location.pathname || "/";
   const isForArchitects = path === "/for-architects";
   const isForHomeowners = path === "/for-homeowners";
   const isAbout = path === "/about";
+
+  const handleWaitlistClick = (e) => {
+    e.preventDefault();
+    setMenuOpen(false);
+    const scrollToSection = () =>
+      document.getElementById("apply")?.scrollIntoView({ behavior: "smooth", block: "center" });
+    if (path === "/") {
+      scrollToSection();
+    } else {
+      navigate("/");
+      setTimeout(scrollToSection, 80);
+    }
+  };
 
   return (
     <div>
@@ -121,13 +135,13 @@ export default function Layout({ children }) {
           </ul>
 
           <div className="nav-actions">
-            <Link
-              to="/#apply"
+            <a
+              href="/#apply"
               className="btn-waitlist"
-              onClick={() => setMenuOpen(false)}
+              onClick={handleWaitlistClick}
             >
               Join Waitlist
-            </Link>
+            </a>
             <Link
               to={path === "/for-architects" ? "/for-architects#apply" : "/#apply"}
               className="btn-primary"
@@ -162,13 +176,13 @@ export default function Layout({ children }) {
             <Link to="/about" onClick={() => setMenuOpen(false)}>
               About
             </Link>
-            <Link
-              to="/#apply"
+            <a
+              href="/#apply"
               className="btn-waitlist"
-              onClick={() => setMenuOpen(false)}
+              onClick={handleWaitlistClick}
             >
               Join Waitlist
-            </Link>
+            </a>
             <Link
               to={path === "/for-architects" ? "/for-architects#apply" : "/#apply"}
               className="btn-primary"
