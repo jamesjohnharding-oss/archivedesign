@@ -1,10 +1,12 @@
 import React, { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 
-const NavLogo = () => (
+const NavLogo = ({ dark }) => (
   <Link to="/" className="logo">
     <svg
       className="logo-mark"
+      width="22"
+      height="24"
       viewBox="0 0 28 32"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -14,12 +16,12 @@ const NavLogo = () => (
         y="0.75"
         width="26.5"
         height="30.5"
-        stroke="#1A5C6B"
+        stroke={dark ? "rgba(247,244,238,0.75)" : "#1A5C6B"}
         strokeWidth="1.5"
       />
-      <line x1="6" y1="5" x2="6" y2="31.5" stroke="#1A5C6B" strokeWidth="1.5" />
-      <line x1="6" y1="5" x2="22" y2="5" stroke="#1A5C6B" strokeWidth="1.5" />
-      <line x1="22" y1="5" x2="22" y2="31.5" stroke="#1A5C6B" strokeWidth="1.5" />
+      <line x1="6" y1="5" x2="6" y2="31.5" stroke={dark ? "rgba(247,244,238,0.75)" : "#1A5C6B"} strokeWidth="1.5" />
+      <line x1="6" y1="5" x2="22" y2="5" stroke={dark ? "rgba(247,244,238,0.75)" : "#1A5C6B"} strokeWidth="1.5" />
+      <line x1="22" y1="5" x2="22" y2="31.5" stroke={dark ? "rgba(247,244,238,0.75)" : "#1A5C6B"} strokeWidth="1.5" />
       <circle cx="14" cy="31.5" r="2.5" fill="#E8952A" />
     </svg>
     <div>
@@ -73,7 +75,7 @@ const FooterLogo = () => (
   </Link>
 );
 
-export default function Layout({ children }) {
+export default function Layout({ children, darkNav: darkNavProp, ctaLabel: ctaLabelProp, ctaHref: ctaHrefProp }) {
   const location = useLocation();
   const [menuOpen, setMenuOpen] = useState(false);
 
@@ -81,6 +83,11 @@ export default function Layout({ children }) {
   const path = location.pathname || "/";
   const isForArchitects = path === "/for-architects";
   const isAbout = path === "/about";
+  const isDashboard = path.startsWith("/dashboard");
+  const darkNav = darkNavProp ?? isDashboard;
+  const ctaLabel = ctaLabelProp ?? (isDashboard ? "View public profile" : "Get Started");
+  const ctaHref = ctaHrefProp ?? (isDashboard ? "/profile" : (path === "/for-architects" ? "/for-architects#apply" : "/#apply"));
+  const navClass = darkNav ? "nav-dark" : "";
 
   const handleWaitlistClick = (e) => {
     e.preventDefault();
@@ -95,22 +102,25 @@ export default function Layout({ children }) {
     }
   };
 
+  const primaryCtaHref = ctaHref ?? (path === "/for-architects" ? "/for-architects#apply" : "/#apply");
+  const primaryCtaClass = darkNav ? "btn-primary btn-primary-amber" : "btn-primary";
+
   return (
     <div>
       <div className="top-bar" />
 
-      <nav>
+      <nav className={navClass}>
         <div className="nav-inner">
-          <NavLogo />
+          <NavLogo dark={darkNav} />
 
           <ul className="nav-links">
             <li>
-              <a
-                href="/homeowner.html"
+              <Link
+                to="/for-homeowners"
                 onClick={() => setMenuOpen(false)}
               >
                 For Homeowners
-              </a>
+              </Link>
             </li>
             <li>
               <Link
@@ -141,11 +151,11 @@ export default function Layout({ children }) {
               Join Waitlist
             </a>
             <Link
-              to={path === "/for-architects" ? "/for-architects#apply" : "/#apply"}
-              className="btn-primary"
+              to={primaryCtaHref}
+              className={primaryCtaClass}
               onClick={() => setMenuOpen(false)}
             >
-              Get Started
+              {ctaLabel}
             </Link>
           </div>
 
@@ -165,9 +175,9 @@ export default function Layout({ children }) {
           </button>
 
           <div className={"mobile-menu" + (menuOpen ? " open" : "")}>
-            <a href="/homeowner.html" onClick={() => setMenuOpen(false)}>
+            <Link to="/for-homeowners" onClick={() => setMenuOpen(false)}>
               For Homeowners
-            </a>
+            </Link>
             <Link to="/for-architects" onClick={() => setMenuOpen(false)}>
               For Architects
             </Link>
@@ -182,11 +192,11 @@ export default function Layout({ children }) {
               Join Waitlist
             </a>
             <Link
-              to={path === "/for-architects" ? "/for-architects#apply" : "/#apply"}
-              className="btn-primary"
+              to={primaryCtaHref}
+              className={primaryCtaClass}
               onClick={() => setMenuOpen(false)}
             >
-              Get Started
+              {ctaLabel}
             </Link>
           </div>
         </div>
