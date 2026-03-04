@@ -80,7 +80,6 @@ export default function Layout({ children }) {
   const navigate = useNavigate();
   const path = location.pathname || "/";
   const isForArchitects = path === "/for-architects";
-  const isForHomeowners = path === "/for-homeowners";
   const isAbout = path === "/about";
 
   const handleWaitlistClick = (e) => {
@@ -106,13 +105,12 @@ export default function Layout({ children }) {
 
           <ul className="nav-links">
             <li>
-              <Link
-                to="/for-homeowners"
-                className={isForHomeowners ? "active" : undefined}
+              <a
+                href="/homeowner.html"
                 onClick={() => setMenuOpen(false)}
               >
                 For Homeowners
-              </Link>
+              </a>
             </li>
             <li>
               <Link
@@ -167,9 +165,9 @@ export default function Layout({ children }) {
           </button>
 
           <div className={"mobile-menu" + (menuOpen ? " open" : "")}>
-            <Link to="/for-homeowners" onClick={() => setMenuOpen(false)}>
+            <a href="/homeowner.html" onClick={() => setMenuOpen(false)}>
               For Homeowners
-            </Link>
+            </a>
             <Link to="/for-architects" onClick={() => setMenuOpen(false)}>
               For Architects
             </Link>
